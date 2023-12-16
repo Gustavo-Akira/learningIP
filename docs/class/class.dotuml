@@ -1,0 +1,41 @@
+ClassDiagram [frame=true framecolor=steelblue label="Model"] {
+ class User{
+    private id: int
+    private name: String
+    private email: String
+    private password: String
+    private validate(): void
+ }
+
+ class Course{
+    private id: int
+    private name: String
+    private hours: int
+    private keywords: String
+    private validate(): void
+ }
+
+ class Lesson{
+   private id:int
+   private name:String
+   private file: byte
+   private course: Course
+   private validate(): void
+ }
+
+ class Complaint{
+   private id: int
+   private text: String
+   private type: ComplaintType
+   private validate(): void
+ }
+ enumeration ComplaintType{
+   Functional
+   Lesson
+   Others
+ }
+  User "0..*" --> "0..*" Course;
+  User "1" --> "0..*" Complaint;
+  Course "1" --> "0..*" Lesson;
+
+}
